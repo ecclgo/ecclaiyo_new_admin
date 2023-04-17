@@ -1,7 +1,7 @@
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom/cjs/react-router-dom";
 import Login from "./screen/Login";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import GlobalStyles from "./GlobalStyles";
 import routes from "./screen/Routes";
 import Home from "./screen/Home";
@@ -9,6 +9,7 @@ import Signup from "./screen/Signup";
 import Layout from "./components/Layout";
 import Notfound from "./screen/Notfound";
 import PartnerMember from "./screen/members/PartnerMember";
+import PayManagement from "./screen/pay/PayManagement";
 
 function App() {
   let loginToken = localStorage.getItem("isLoggedInVar");
@@ -46,6 +47,17 @@ function App() {
                     <>
                       <Layout>
                         <PartnerMember />
+                      </Layout>
+                    </>
+                  ) : null
+                }
+              </Route>
+              <Route exact path={routes.PayManagement}>
+                {
+                  loginToken === 'true' ? (
+                    <>
+                      <Layout>
+                        <PayManagement />
                       </Layout>
                     </>
                   ) : null

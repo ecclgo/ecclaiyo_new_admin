@@ -31,7 +31,7 @@ const MenuContainer = styled.div`
 const SidebarItem =styled.div`
   margin-bottom: 10px;
   margin-left: 20px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
   color: #FFFFFF;
   cursor: pointer;
@@ -50,7 +50,7 @@ const Submenu = styled.div`
 const SubMenuItem = styled.div`
   padding: 5px;
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 30px;
   font-size: 15px;
   font-family: "Inter";
   font-style: normal;
@@ -71,13 +71,22 @@ const UnderLine = styled.div`
   background-color: #FFFFFF;
 `;
 
-const StyledLink = styled(Link)`
+const SStyledLink = styled(Link)`
   color: #BDC2CA;
   text-decoration-line: none;
 
   &.active {
     color: green;
   }
+`;
+
+const LStyledLink = styled(Link)`
+color: #FFFFFF;
+  text-decoration-line: none;
+  
+&.active {
+  color: green;
+}
 `;
 
 function Sidebar() {
@@ -106,14 +115,14 @@ function Sidebar() {
               showMenu && (
                 <Submenu>
                   <SubMenuItem>
-                    <StyledLink className={btnClicked === 'active1' || location.pathname === '/Member/User' ? " active" : null} to={routes.UserMeber} onClick={() => {setBtnClicked('active1')}}>
+                    <SStyledLink className={location.pathname === routes.UserMember ? " active" : null} to={routes.UserMeber} onClick={() => {setBtnClicked('active1')}}>
                       회원
-                    </StyledLink>
+                    </SStyledLink>
                   </SubMenuItem>
                   <SubMenuItem>
-                    <StyledLink className={btnClicked === 'active2' || location.pathname === '/Member/Partner' ? " active" : null} to={routes.PartnerMember} onClick={() => {setBtnClicked('active2')}}>
+                    <SStyledLink className={location.pathname === routes.PartnerMember ? " active" : null} to={routes.PartnerMember} onClick={() => {setBtnClicked('active2')}}>
                       파트너
-                    </StyledLink>
+                    </SStyledLink>
                   </SubMenuItem>
                 </Submenu>
               )
@@ -123,7 +132,9 @@ function Sidebar() {
               <UnderLine />
             </SidebarItem>
             <SidebarItem>
-              정산/수수료 관리
+              <LStyledLink className={location.pathname === routes.PayManagement ? " active" : null} to={routes.PayManagement} onClick={() => {setBtnClicked('active4')}}>
+                정산 관리
+              </LStyledLink>
               <UnderLine />
             </SidebarItem>
           </MenuContainer>

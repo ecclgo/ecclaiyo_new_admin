@@ -1,42 +1,66 @@
-import { useState } from "react";
+import styled from "styled-components";
 
-function Paging(props) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [data, setData] = useState(props.jsonList);
-  const totalPages = Math.ceil(data?.length / itemsPerPage);
+const PageUl = styled.ul`
+  position: absolute;
+  float: left;
+  list-style: none;
+  text-align: center;
+  border-radius: 3px;
+  color: white;
+  padding: 1px;
+  background-color: gray;
+  top: 400px;
+  left: 1100px;
+`;
 
-  const handleClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+const PageLi = styled.li`
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+  width: 25px;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #263a6c;
+  }
+  &:focus::after {
+    color: white;
+    background-color: #263a6c;
+  }
+`;
 
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
+const PageSpan = styled.span`
+  &:hover::after,
+  &:focus::after {
+    border-radius: 100%;
+    color: white;
+    background-color: #263a6c;
+  }
+`;
 
-    for(let i = 1; i <= totalPages; i++) {
-      pageNumbers?.push(
-        <li key={i} onClick={() => {handleClick(i)}}>
-          {i}
-        </li>
-      );
-    };
-    return pageNumbers;
-  };
+function Paging({ totalPosts, paginate }) {
+  const pageNumbers = [];
+  for(let i = 1; i <= Math.ceil(totalPosts / 5); i++) {
+    pageNumbers.push(i);
+  }
 
-  const renderData = () => {
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentData = data?.slice(indexOfFirstItem, indexOfLastItem);
-
-    return currentData?.map((item) => <div key={item.id}>{item.name}</div>);
-  };
-
-  return (
+  return(
     <div>
-      {renderData()}
-      <ul id="page-numbers">{renderPageNumbers()}</ul>
+      <nav>
+        <PageUl className="pagination">
+          {pageNumbers.map((number) => (
+            <PageLi key={number} className="page-item">
+              <PageSpan onClick={() => paginate(number)} className="page-link">
+                {number}
+              </PageSpan>
+            </PageLi>
+          ))}
+        </PageUl>
+      </nav>
     </div>
-  );
-};
+  )
+}
 
 export default Paging;

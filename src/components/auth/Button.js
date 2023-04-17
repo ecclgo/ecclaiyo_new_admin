@@ -10,6 +10,7 @@ const Button = styled.input`
 	margin-right: -270px;
 	border-radius: 5px;
 	background-color: green;
+	cursor: pointer;
 `;
 
 export default Button;

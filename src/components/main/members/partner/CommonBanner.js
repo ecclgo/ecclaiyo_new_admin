@@ -1,37 +1,13 @@
 import { useState } from "react";
 import { SBanner, BannerText, RegiBanner, RegiBtn, WaitingBtn, ApprovedBtn, DroppedBtn, SearchBox, SearchText, WaitingBox, WatingList, WaitingNumber, WaitingBtnLine, ApproveBtnLine, DroppedBtnLine } from "./BannerStyle";
-import { WaitingPartnerSearch } from "../../../api/partner/WaitingPartnerSearch";
 import WaitingBanner from "./WaitingBanner";
 import ApprovedBanner from "./ApprovedBanner";
 import DroppedBanner from "./DroppedBanner";
-import { ApprovedPartnerSearch } from "../../../api/partner/ApprovedPartnerSearch";
 
 function CommonBanner() {
 
   const [clickedTab, setClickedTab] = useState('waiting');
   const [btnActive, setBtnActive] = useState('active1');
-  const [jsonList, setJsonList] = useState(null);
-  const [appList, setAppList] = useState(null);
-
-  const [post, setPost] = useState({
-    keyword: null,
-    profileStatus: "ALL",
-    dateOfAccessionType: "ALL",
-    page: 10,
-    size: 5
-  });
-
-  const CallSearchList = async() => {
-    let result;
-    if(clickedTab === 'waiting') {
-      result = await WaitingPartnerSearch(post);
-      setJsonList(result.data);
-    } else if(clickedTab === 'approved') {
-      result = await ApprovedPartnerSearch();
-      setAppList(result.data);
-    };
-  };
-
 
   return (
     <>
@@ -40,11 +16,11 @@ function CommonBanner() {
       </SBanner>
       <RegiBanner>
         <RegiBtn>
-          <WaitingBtn value='waiting' className={(btnActive === 'active1' ? " active" : null)} onClick={(e) => {setBtnActive('active1'); setClickedTab('waiting'); CallSearchList();}}>
+          <WaitingBtn value='waiting' className={(btnActive === 'active1' ? " active" : null)} onClick={() => {setBtnActive('active1'); setClickedTab('waiting');}}>
             가입 대기
             <WaitingBtnLine className={(btnActive === 'active1' ? null : "notActive")} />
           </WaitingBtn>
-          <ApprovedBtn value='approved' className={(btnActive === 'active2' ? " active" : null)} onClick={(e) => {setBtnActive('active2'); setClickedTab('approved'); CallSearchList();}}>
+          <ApprovedBtn value='approved' className={(btnActive === 'active2' ? " active" : null)} onClick={() => {setBtnActive('active2'); setClickedTab('approved');}}>
             승인 파트너
             <ApproveBtnLine className={(btnActive === 'active2' ? null : "notActive")} />
           </ApprovedBtn>
@@ -61,15 +37,15 @@ function CommonBanner() {
       </SearchBox>
       {
         clickedTab === 'waiting' ? (
-          <WaitingBanner jsonList={jsonList} />
+          <WaitingBanner clickedTab={clickedTab} />
         )
         :
         clickedTab === 'approved' ? (
-          <ApprovedBanner jsonList={appList} />
+          <ApprovedBanner clickedTab={clickedTab} />
         )
         :
         clickedTab === 'dropped' ? (
-          <DroppedBanner jsonList={jsonList} />
+          <DroppedBanner />
         )
         :
         null

@@ -35,3 +35,18 @@ export const activeMenu = [
     engStatus: "BLOCKED_LIFETIME",
   }
 ];
+
+export const depositMenu = [
+  {
+    korStatus: "일시 정지",
+    engStatus: "paused",
+  },
+  {
+    korStatus: "입금 대기",
+    engStatus: "deposit",
+  },
+  {
+    korStatus: "입금 완료",
+    engStatus: "completed",
+  }
+];

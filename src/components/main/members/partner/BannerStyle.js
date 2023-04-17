@@ -60,6 +60,7 @@ export const WaitingBtn = styled.button`
   text-align: center;
   background-color: #FFFFFF;
   color: #333333;
+  cursor: pointer;
 
   font-family: 'Inter';
   font-style: normal;
@@ -125,6 +126,7 @@ export const ApprovedBtn = styled.button`
   text-align: center;
   background-color: #FFFFFF;
   color: #333333;
+  cursor: pointer;
 
   font-family: 'Inter';
   font-style: normal;
@@ -150,6 +152,7 @@ export const DroppedBtn = styled.button`
   text-align: center;
   background-color: #FFFFFF;
   color: #333333;
+  cursor: pointer;
 
   font-family: 'Inter';
   font-style: normal;
@@ -227,7 +230,7 @@ export const ResultList = styled.div`
 
   position: absolute;
   width: 2000px;
-  height: 300px;
+  height: 250px;
   left: 150px;
   top: 100px;
 
@@ -236,4 +239,13 @@ export const ResultList = styled.div`
 
 export const ApprovedList = styled.div`
 
+`;
+
+export const PostNumber = styled.span`
+  color: ${(props) => {
+    const number = parseInt(props.number);
+    if(number >= 0) {
+      return 'green';
+    }
+  }};
 `;

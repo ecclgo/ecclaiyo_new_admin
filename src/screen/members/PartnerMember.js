@@ -1,5 +1,5 @@
 import PageTitle from "../../components/PageTitle";
-import CommonBanner from "../../components/main/partner/CommonBanner";
+import CommonBanner from "../../components/main/members/partner/CommonBanner";
 
 function PartnerMember() {
   return (

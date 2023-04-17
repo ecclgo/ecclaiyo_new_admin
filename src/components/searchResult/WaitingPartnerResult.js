@@ -6,6 +6,8 @@ import Select from "react-select";
 import { statusMenu } from "../Constants";
 import { ChangeStatus } from "../../api/partner/ChangeStatus";
 import { tableStyles } from "./TableStyles";
+import moment from "moment";
+import { useState } from "react";
 
 function WaitingPartnerResult(props) {
   return (
@@ -37,7 +39,14 @@ function WaitingPartnerResult(props) {
                   <GetPartner 
                     key={i}
                     Id={i + 1}
-                    status={item.status}
+                    status={
+                      item.status === 'IN_REVIEW' ? '승인대기'
+                      : item.status === 'IN_MODIFICATION' ? '수정요청'
+                      : item.status === 'READY_FOR_CONTRACT' ? '계약대기'
+                      : item.status === 'APPROVED' ? '가입완료'
+                      : item.status === 'DENIED' ? '가입거부'
+                      : null
+                    }
                     partnerId={item.partnerId}
                     partnerName={item.partnerName}
                     phoneNumber={item.phoneNumber}
@@ -48,8 +57,10 @@ function WaitingPartnerResult(props) {
                     DRIVER_LICENSE={item.documents[0]?.url}
                     BANKBOOK={item.documents[3]?.url}
                     partnerBusinessArea={item.partnerBusinessArea}
-                    dateOfRegistration={item.dateOfRegistration}
-                    lastModifiedDate={item.lastModifiedDate}
+                    dateOfRegistration={
+                      moment(item.dateOfRegistration).format('YY.MM.DD' + ' - ' + 'HH:mm')
+                    }
+                    lastModifiedDate={moment(item.lastModifiedDate).format('YY.MM.DD' + ' - ' + 'HH:mm')}
                   />
                 )
               }) : null
@@ -62,6 +73,8 @@ function WaitingPartnerResult(props) {
 };
 
 function GetPartner(props) {
+
+  const [openModal, setOpenModal] = useState(false);
 
   const options = statusMenu;
 
@@ -94,7 +107,7 @@ function GetPartner(props) {
   `;
 
   const StyledSelect = styled(Select)`
-    width: 250px;
+    width: 220px;
   `;
 
   return (
@@ -103,7 +116,11 @@ function GetPartner(props) {
       <td>
         <StyledSelect options={dropdownOptions} defaultValue={props.status} placeholder={props.status} onChange={handleSelectChange} />
       </td>
-      <td>{props.partnerId}</td>
+      <td>
+        {
+          props.partnerId
+        }
+      </td>
       <td>{props.partnerName}</td>
       <td>{props.phoneNumber}</td>
       <td>{props.businessRegistrationNumber}</td>

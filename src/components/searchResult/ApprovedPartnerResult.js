@@ -4,8 +4,14 @@ import { activeMenu } from "../Constants";
 import styled from "styled-components";
 import { ChangeActiveStatus } from "../../api/partner/ChangeStatus";
 import Select from "react-select";
+import moment from "moment";
 
 function ApprovedPartnerResult(props) {
+
+  const StyledSelect = styled(Select)`
+    width: 200px;
+  `;
+
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -33,16 +39,24 @@ function ApprovedPartnerResult(props) {
                   key={i}
                   No={i + 1}
                   id={item.id}
-                  partnerActiveStatus={item.partnerActiveStatus}
+                  partnerActiveStatus={
+                    item.partnerActiveStatus === 'ACTIVE' ? '활동 가능' 
+                    : item.partnerActiveStatus === 'BLOCKED_TEMPORARY' ? '활동 정지(30일)' 
+                    : item.partnerActiveStatus === 'BLOCKED_LIFETIME' ? '활동 정지(무기한)' 
+                    : null}
                   partnerName={item.partnerName}
                   phoneNumber={item.phoneNumber}
                   mannerPoint={item.mannerPoint}
                   countOfService={item.countOfService}
                   gpa={item.gpa}
                   additionalNote={item.additionalNote}
-                  passInfo={item.passInfo?.type + "/" + item.passInfo?.remainDay}
-                  lastAccessDate={item.lastAccessDate}
-                  dateOfAccession={item.dateOfAccession}
+                  passInfo={
+                    item.passInfo?.type === 'MONTHLY' ? '월간 구독권 / ' + item.passInfo?.remainDay + '일 남음'
+                    : item.passInfo?.type === 'YEARLY' ? '연간 구독권 / ' + item.passInfo?.remainDay + '일 남음'
+                    : item.passInfo?.type === 'FREE' ? '자유 이용권' : null 
+                    }
+                  lastAccessDate={moment(item.lastAccessDate).format('YY.MM.DD' + ' - ' + 'HH:mm')}
+                  dateOfAccession={moment(item.dateOfAccession).format('YY.MM.DD' + ' - ' + 'HH:mm')}
                 />
               )
             }) : null
@@ -69,20 +83,6 @@ function ApprovedPartnerResult(props) {
       await ChangeActiveStatus(data);
     };
 
-    const ButtonZip = styled.button`
-      color: black;
-      border: none;
-      background-color: #EFF2F8;
-      font-weight: 400;
-      font-family: "Inter";
-      font-style: normal;
-      font-size: 16px;
-      line-height: 16px;
-    `;
-
-    const StyledSelect = styled(Select)`
-      width: 250px;
-    `;
 
     return (
       <>
