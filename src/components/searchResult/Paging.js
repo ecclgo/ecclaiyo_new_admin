@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const PageUl = styled.ul`
@@ -6,9 +7,9 @@ const PageUl = styled.ul`
   list-style: none;
   text-align: center;
   border-radius: 3px;
-  color: white;
+  color: black;
   padding: 1px;
-  background-color: gray;
+  
   top: 400px;
   left: 1100px;
 `;
@@ -20,27 +21,43 @@ const PageLi = styled.li`
   padding: 5px;
   border-radius: 5px;
   width: 25px;
+  background-color: #FFFFFF;
   &:hover {
     cursor: pointer;
-    color: white;
-    background-color: #263a6c;
+    background-color: green;
   }
   &:focus::after {
-    color: white;
-    background-color: #263a6c;
+    color: green;
   }
 `;
 
-const PageSpan = styled.span`
-  &:hover::after,
+const PageSpan = styled.button`
+  padding: 5px 5px;
+  width: 25px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: ${props => props.activeBtn ? 'green' : '#FFFFFF'};
+  color: ${props => props.activeBtn ? '#FFFFFF' : '#333333'};
+  border: none;
+  &:hover {
+    background-color: green;
+  }
   &:focus::after {
     border-radius: 100%;
-    color: white;
-    background-color: #263a6c;
+    color: black;
+    background-color: green;
   }
 `;
 
 function Paging({ totalPosts, paginate }) {
+  const [activeBtn, setActiveBtn] = useState(1);
+
+  const handleClick = (number) => {
+    setActiveBtn(number);
+  }
+  
+
   const pageNumbers = [];
   for(let i = 1; i <= Math.ceil(totalPosts / 5); i++) {
     pageNumbers.push(i);
@@ -49,10 +66,10 @@ function Paging({ totalPosts, paginate }) {
   return(
     <div>
       <nav>
-        <PageUl className="pagination">
+        <PageUl className="pagination" > 
           {pageNumbers.map((number) => (
-            <PageLi key={number} className="page-item">
-              <PageSpan onClick={() => paginate(number)} className="page-link">
+            <PageLi key={number} className="page-item" >
+              <PageSpan activeBtn={activeBtn === number} onClick={() => {paginate(number); handleClick(number)}} className="page-link">
                 {number}
               </PageSpan>
             </PageLi>

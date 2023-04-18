@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ChangeActiveStatus } from "../../api/partner/ChangeStatus";
 import Select from "react-select";
 import moment from "moment";
+import { useState } from "react";
 
 function ApprovedPartnerResult(props) {
 
@@ -37,7 +38,7 @@ function ApprovedPartnerResult(props) {
               return (
                 <GetApproved 
                   key={i}
-                  No={i + 1}
+                  NO={i + 1}
                   id={item.id}
                   partnerActiveStatus={
                     item.partnerActiveStatus === 'ACTIVE' ? '활동 가능' 
@@ -57,6 +58,7 @@ function ApprovedPartnerResult(props) {
                     }
                   lastAccessDate={moment(item.lastAccessDate).format('YY.MM.DD' + ' - ' + 'HH:mm')}
                   dateOfAccession={moment(item.dateOfAccession).format('YY.MM.DD' + ' - ' + 'HH:mm')}
+                  setOpenModal={props.setOpenModal}
                 />
               )
             }) : null
@@ -67,9 +69,8 @@ function ApprovedPartnerResult(props) {
   )
 
   function GetApproved(props) {
+
     const options = activeMenu;
-
-
     const dropdownOptions = options.map((option) => {
       return {value: option.engStatus, label: option.korStatus}
     });
@@ -83,12 +84,28 @@ function ApprovedPartnerResult(props) {
       await ChangeActiveStatus(data);
     };
 
+    const handleModal = () => {
+      props.setOpenModal(true);
+    };
+
+    const getPartnerId = (data) => {
+      if(localStorage.getItem("partnerId") === '') {
+        localStorage.setItem("partnerId", data);
+      } else {
+        localStorage.removeItem("partnerId");
+        localStorage.setItem("partnerId", data);
+      }
+    };
 
     return (
       <>
         <tr>
-          <td>{props.No}</td>
-          <td>{props.id}</td>
+          <td>{props.NO}</td>
+          <td >
+            <a style={{cursor: "pointer", textDecorationLine:"underline", color: "blue"}} onClick={() => {handleModal(); getPartnerId(props.id);}}>
+              {props.id}
+            </a>
+          </td>
           <td>
             <StyledSelect options={dropdownOptions} defaultValue={props.partnerActiveStatus} placeholder={props.partnerActiveStatus} onChange={handleSelectChange} />
           </td>

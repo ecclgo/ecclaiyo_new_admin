@@ -104,6 +104,7 @@ function GetPartner(props) {
     font-style: normal;
     font-size: 16px;
     line-height: 16px;
+    cursor: pointer;
   `;
 
   const StyledSelect = styled(Select)`
@@ -117,9 +118,9 @@ function GetPartner(props) {
         <StyledSelect options={dropdownOptions} defaultValue={props.status} placeholder={props.status} onChange={handleSelectChange} />
       </td>
       <td>
-        {
-          props.partnerId
-        }
+        <a style={{cursor: "pointer", textDecorationLine:"underline", color: "blue"}}>
+          {props.partnerId}
+        </a>
       </td>
       <td>{props.partnerName}</td>
       <td>{props.phoneNumber}</td>
