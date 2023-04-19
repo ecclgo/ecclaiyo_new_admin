@@ -2,21 +2,22 @@ import styled from "styled-components";
 
 export const SBanner = styled.div`
   position: absolute;
-  width: 2310px;
+  width: 2300px;
   height: 88px;
   left: 240px;
   top: 90px;
+  border: 1px solid;
 
   background-color: #FFFFFF;
   border-radius: 10px;
 `;
 
-export const BannerText = styled.input`
+export const BannerText = styled.span`
   position: absolute;
   width: 150px;
   height: 50px;
   left: 30px;
-  top: 15px;
+  top: 30px;
   text-align: center;
   background-color: #FFFFFF;
   border-color: #FFFFFF;
@@ -33,10 +34,12 @@ export const BannerText = styled.input`
 
 export const RegiBanner = styled.div`
   position: absolute;
-  width: 2310px;
+  width: 2300px;
   height: 70px;
   left: 240px;
   top: 200px;
+  border: 0.1px solid;
+  border-radius: 10px;
 
   background: #FFFFFF;
 `;
@@ -170,10 +173,11 @@ export const DroppedBtn = styled.button`
 
 export const SearchBox = styled.div`
   position: absolute;
-  width: 2310px;
+  width: 2300px;
   height: 308px;
   left: 240px;
   top: 290px;
+  border: 0.1px solid;
 
   background: #FFFFFF;
   border-radius: 10px;
@@ -201,10 +205,11 @@ export const SearchTable = styled.div`
 
 export const ResultBox = styled.div`
   position: absolute;
-  width: 2310px;
-  height: 530px;
+  width: 2300px;
+  height: 500px;
   left: 240px;
   top: 620px;
+  border: 0.1px solid;
 
   background: #FFFFFF;
   border-radius: 10px;
@@ -229,7 +234,7 @@ export const ResultList = styled.div`
   box-sizing: border-box;
 
   position: absolute;
-  width: 2000px;
+  width: 2100px;
   height: 250px;
   left: 150px;
   top: 100px;

@@ -10,7 +10,9 @@ function PayCommonBanner() {
   return (
     <>
       <SBanner>
-        <BannerText type="text" value="정산관리" readOnly/>
+        <BannerText>
+          정산관리
+        </BannerText>
       </SBanner>
       <PayBanner>
         <PayBtn>

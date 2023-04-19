@@ -34,7 +34,7 @@ function Login() {
 	const clearLoginError = () => {
 		clearErrors("result");
 	};
-
+	console.log(formState.errors);
 	return (
 		<>
 			<AuthLayout>
@@ -48,7 +48,7 @@ function Login() {
 						</div>
 						<form onSubmit={handleSubmit(onSubmit)}>
 							<Input {...register("adminId", {required: "Id를 입력해주세요."})} name="adminId" type="text" placeholder="Id를 입력해주세요." hasError={Boolean(formState.errors?.Id?.message)} onChange={clearLoginError}/>
-							<FormError message={formState?.errors?.adminId?.message} />
+							<FormError message={formState?.errors?.id?.message} />
 							<Input {...register("password", {required: "password is required."})} name="password" type="password" placeholder="Password를 입력해주세요." hasError={Boolean(formState.errors?.Password?.message)} onChange={clearLoginError} />
 							<FormError message={formState?.errors?.password?.message} />
 							<Button type="submit" value="확인"></Button>
@@ -56,7 +56,7 @@ function Login() {
 						<SignupBox linkText="계정등록" link={routes.Signup} />
 					</FormBox>
 			</AuthLayout>
-			<Authentication ref={userRef}/>
+			<Authentication ref={userRef} />
 		</>
 	)
 };

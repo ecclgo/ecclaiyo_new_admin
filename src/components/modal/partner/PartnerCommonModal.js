@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Select from "react-select";
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -42,3 +43,40 @@ export const ModalCloseBtn = styled.button`
   background-color: #FFFFFF;
 `;
 
+export const Text = styled.span`
+position: absolute;
+text-align: center;
+bottom: 20px;
+width: 80px;
+height: 17px;
+cursor: pointer;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 17px;
+`;
+
+export const Underline = styled.div`
+position: absolute;
+height: 2px;
+width: 1100px;
+background-color: lightgray;
+top: 40px;
+`;
+
+export const NavTab = styled.div`
+position: absolute;
+top: 60px;
+width: 1100px;
+height: 50px;
+background-color: #FFFFFF;
+`;
+
+export const StyledSelect = styled(Select)`
+  width: 160px;
+  margin-left: 30px;
+  top: -10px;
+  cursor: pointer;
+`;

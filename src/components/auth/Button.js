@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 const Button = styled.input`
+	position: absolute;
 	border: none;
-	margin-top: -73px;
+	top: 56.5%;
 	color: white;
 	text-align: center;
 	width: 120px;

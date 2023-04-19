@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import Notfound from "./screen/Notfound";
 import PartnerMember from "./screen/members/PartnerMember";
 import PayManagement from "./screen/pay/PayManagement";
+import PartnerUser from "./screen/members/PartnerUser";
 
 function App() {
   let loginToken = localStorage.getItem("isLoggedInVar");
@@ -63,7 +64,18 @@ function App() {
                   ) : null
                 }
               </Route>
-              <Route>
+              <Route exact path={routes.UserMember}>
+                {
+                  loginToken === 'true' ? (
+                    <>
+                      <Layout>
+                        <PartnerUser />
+                      </Layout>
+                    </>
+                  ) : <Notfound />
+                }
+              </Route>
+              <Route exact path={routes.UserMember}>
                 <Notfound />
               </Route>
             </Switch>

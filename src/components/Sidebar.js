@@ -4,14 +4,18 @@ import { Link, useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import routes from "../screen/Routes";
 
 const Container = styled.div`
+  position: absolute;
+  top: 80px;
   height: 300px;
   width: 230px;
   background-color: #404A5C;
 `;
 
 const ContainerOut = styled.div`
+  position: absolute;
+  top: 350px;
   width: 230px;
-  height: 800px;
+  height: 775px;
   background-color: #455063;
   `;
 
@@ -115,7 +119,7 @@ function Sidebar() {
               showMenu && (
                 <Submenu>
                   <SubMenuItem>
-                    <SStyledLink className={location.pathname === routes.UserMember ? " active" : null} to={routes.UserMeber} onClick={() => {setBtnClicked('active1')}}>
+                    <SStyledLink className={location.pathname === routes.UserMember ? " active" : null} to={routes.UserMember} onClick={() => {setBtnClicked('active1')}}>
                       회원
                     </SStyledLink>
                   </SubMenuItem>

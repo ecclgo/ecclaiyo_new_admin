@@ -28,7 +28,6 @@ function PayCompleteBanner({clickedTab}) {
     fetchData();
   }, [clickedTab]);
 
-  console.log(posts);
   return (
     <>
       <ResultBox>

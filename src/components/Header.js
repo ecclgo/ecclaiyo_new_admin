@@ -7,10 +7,10 @@ import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom.m
 import routes from "../screen/Routes";
 
 const SHeader = styled.header`
-  width: 100%;
+  position: absolute;
   height: 80px;
   left: 0px;
-  margin-top: 0px;
+  width: 100%;
   background-color: #2D3039;
 `;
 
@@ -38,13 +38,42 @@ const IconContainer = styled.div`
 `;
 
 const Icon = styled.span`
-  margin-left: 15px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 17px;
   color: #FFFFFF;
+`;
+
+const Myname = styled(Icon)`
+  position: absolute;
+  top: 30px;
+  right: 200px;
+`;
+
+const MyInfo = styled(Icon)`
+  position: absolute;
+  top: 30px;
+  right: 135px;
+`;
+
+const Alarm = styled(Icon)`
+  position: absolute;
+  top: 26px;
+  right: 103px;
+`;
+
+const Logout = styled(Icon)`
+  position: absolute;
+  top: 30px;
+  right: 20px;
+`;
+
+const AdminText = styled(Icon)`
+  position: absolute;
+  top: 30px;
+  left: 270px;
 `;
 
 const SButton = styled.input`
@@ -78,16 +107,24 @@ function Header() {
           <Column>
             <IconContainer>
               <Icon>
-                {localStorage.getItem("adminId")}님
+                <Myname>
+                  {localStorage.getItem("adminId")}님
+                </Myname>
               </Icon>
               <Icon>
-                내정보
+                <MyInfo>
+                  내정보
+                </MyInfo>
               </Icon>
               <Icon>
-                <img src={bell} />
+                <Alarm>
+                  <img src={bell} />
+                </Alarm>
               </Icon>
-              <Icon> 
-                <SButton type="submit" value="로그아웃" onClick={handleLogOut}></SButton>
+              <Icon>
+                <Logout>
+                  <SButton type="submit" value="로그아웃" onClick={handleLogOut}></SButton>
+                </Logout>
               </Icon>
             </IconContainer>
           </Column>
@@ -99,7 +136,9 @@ function Header() {
                 <img src={logo} />
               </Icon>
               <Icon>
-                관리자
+                <AdminText>
+                  관리자
+                </AdminText>
               </Icon>
             </IconContainer>
           </Column>

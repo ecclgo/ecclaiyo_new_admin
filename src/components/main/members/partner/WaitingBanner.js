@@ -3,6 +3,8 @@ import WaitingPartnerResult from "../../../searchResult/WaitingPartnerResult";
 import Paging from "../../../searchResult/Paging";
 import { useEffect, useState } from "react";
 import { WaitingPartnerSearch } from "../../../../api/partner/WaitingPartnerSearch";
+import { GetWaitingPartnerDetail } from "../../../../api/partner/detail/GetWaitingPartnerDetail";
+import WaitingPartnerModal from "../../../modal/partner/WaitingPartnerModal";
 
 
 function WaitingBanner({clickedTab}) {
@@ -17,6 +19,7 @@ function WaitingBanner({clickedTab}) {
   const [posts, setPosts] = useState([]);                   //  post 받아오기
   const [currentPage, setCurrentPage] = useState(1);        //  현재 페이지
   const [postPerPage, setPostPerPage] = useState(5);        //  페이지별 보여줄 post 갯수.
+  const [openModal, setOpenModal] = useState(false);
 
   const indexOfLast = currentPage * postPerPage;
   const indexOfFirst = indexOfLast - postPerPage;
@@ -46,8 +49,9 @@ function WaitingBanner({clickedTab}) {
           가입 대기 목록 (총 <PostNumber number={posts?.length}>{posts?.length}</PostNumber>개)
         </ResultNumber>
         <ResultList>
-          <WaitingPartnerResult jsonList={currentPosts(posts)} />
+          <WaitingPartnerResult jsonList={currentPosts(posts)} setOpenModal={setOpenModal} />
         </ResultList>
+        <WaitingPartnerModal openModal={openModal} setOpenModal={setOpenModal} />
         <Paging paginate={setCurrentPage} totalPosts={posts?.length} />
       </ResultBox>
     </>

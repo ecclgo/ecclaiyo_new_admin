@@ -3,6 +3,7 @@ import { SBanner, BannerText, RegiBanner, RegiBtn, WaitingBtn, ApprovedBtn, Drop
 import WaitingBanner from "./WaitingBanner";
 import ApprovedBanner from "./ApprovedBanner";
 import DroppedBanner from "./DroppedBanner";
+import GlobalStyles from "../../../../GlobalStyles";
 
 function CommonBanner() {
 
@@ -11,8 +12,11 @@ function CommonBanner() {
 
   return (
     <>
+    <GlobalStyles>
       <SBanner>
-        <BannerText type="text" value="파트너 관리" readOnly/>
+        <BannerText>
+          파트너 관리
+        </BannerText>
       </SBanner>
       <RegiBanner>
         <RegiBtn>
@@ -50,6 +54,8 @@ function CommonBanner() {
         :
         null
       }
+
+    </GlobalStyles>
     </>
   )
 };

@@ -6,21 +6,20 @@ export const SBanner = styled.div`
   height: 88px;
   left: 240px;
   top: 90px;
+  border: 0.1px solid;
 
   background-color: #FFFFFF;
   border-radius: 10px;
 `;
 
-export const BannerText = styled.input`
+export const BannerText = styled.span`
   position: absolute;
   width: 150px;
   height: 50px;
-  left: 30px;
-  top: 15px;
+  left: 20px;
+  top: 30px;
   text-align: center;
   background-color: #FFFFFF;
-  border-color: #FFFFFF;
-  border: none;
 
   font-family: 'Inter';
   font-style: normal;
@@ -37,6 +36,8 @@ export const PayBanner = styled.div`
   height: 70px;
   left: 240px;
   top: 200px;
+  border: 0.1px solid;
+  border-radius: 10px;
 
   background: #FFFFFF;  
 `;
@@ -135,6 +136,7 @@ export const SearchBox = styled.div`
   height: 308px;
   left: 240px;
   top: 290px;
+  border: 0.1px solid;
 
   background: #FFFFFF;
   border-radius: 10px;
@@ -159,9 +161,10 @@ export const SearchText = styled.span`
 export const ResultBox = styled.div`
   position: absolute;
   width: 2310px;
-  height: 530px;
+  height: 500px;
   left: 240px;
   top: 620px;
+  border: 0.1px solid;
 
   background: #FFFFFF;
   border-radius: 10px;
