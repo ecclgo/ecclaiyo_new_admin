@@ -4,6 +4,7 @@ import WaitingBanner from "./WaitingBanner";
 import ApprovedBanner from "./ApprovedBanner";
 import DroppedBanner from "./DroppedBanner";
 import GlobalStyles from "../../../../GlobalStyles";
+import { SearchBanner } from "./SearchBanner";
 
 function CommonBanner() {
 
@@ -38,6 +39,12 @@ function CommonBanner() {
         <SearchText>
           기본 검색
         </SearchText>
+        {
+          clickedTab === 'dropped' ? 
+          null
+          :
+          (<SearchBanner />)
+        }
       </SearchBox>
       {
         clickedTab === 'waiting' ? (

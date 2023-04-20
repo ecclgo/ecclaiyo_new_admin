@@ -7,8 +7,11 @@ import { statusMenu } from "../Constants";
 import { ChangeStatus } from "../../api/partner/ChangeStatus";
 import { tableStyles } from "./TableStyles";
 import moment from "moment";
+import Message from "../modal/partner/Message";
+import { useEffect, useState } from "react";
 
 function WaitingPartnerResult(props) {
+
   return (
     <>
       <div>
@@ -61,6 +64,9 @@ function WaitingPartnerResult(props) {
                     }
                     lastModifiedDate={moment(item.lastModifiedDate).format('YY.MM.DD' + ' - ' + 'HH:mm')}
                     setOpenModal={props.setOpenModal}
+                    setMsgModal={props.setMsgModal}
+                    Msg={props.Msg}
+                    statusData={props.setStatusData}
                   />
                 )
               }) : null
@@ -80,16 +86,28 @@ function GetPartner(props) {
   });
 
   const handleSelectChange = async(selectedOption) => {
-    let data = 
-    {
-      id: props.partnerId,
-      profileStatus: selectedOption.value,
-      message: (selectedOption.value === "IN_MODIFICATION" ? "in modification" : null),
-    };
-    
-    let result;
-    result = await ChangeStatus(data);
+      if(selectedOption?.value === "IN_MODIFICATION") {
+        props.setMsgModal(true);
+        props.statusData((prevState) => {
+          return {
+            ...prevState,
+            id: props.partnerId,
+            profileStatus: selectedOption.value,
+          }
+        });
+      } else {
+        let data = 
+        {
+          id: props.partnerId,
+          profileStatus: selectedOption.value,
+          message: null
+        };
+        
+        let result;
+        result = await ChangeStatus(data);
+      }
   };
+
 
   const ButtonZip = styled.button`
     color: black;

@@ -5,7 +5,7 @@ import { LayoutText, ModalCloseBtn, ModalLayout, ModalOverlay, NavTab, StyledSel
 import styled from "styled-components";
 import { statusMenu } from "../../Constants";
 import { Table } from "react-bootstrap";
-import { ModalTableStyle, tableStyles } from "../../searchResult/TableStyles";
+import { ModalTableStyle } from "../../searchResult/TableStyles";
 import moment from "moment";
 import picture from "../../img/picture.png"
 import { ChangeStatus } from "../../../api/partner/ChangeStatus";
