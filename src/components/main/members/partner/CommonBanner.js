@@ -4,12 +4,27 @@ import WaitingBanner from "./WaitingBanner";
 import ApprovedBanner from "./ApprovedBanner";
 import DroppedBanner from "./DroppedBanner";
 import GlobalStyles from "../../../../GlobalStyles";
-import { SearchBanner } from "./SearchBanner";
+import { SearchBanner } from "./WaitingSearchBanner";
+import { WaitingPartnerSearch, getSpecificPartner } from "../../../../api/partner/WaitingPartnerSearch";
+import ApprovedSearchBanner from "./ApprovedSearchBanner";
 
 function CommonBanner() {
-
   const [clickedTab, setClickedTab] = useState('waiting');
   const [btnActive, setBtnActive] = useState('active1');
+  const [searchResult, setSearchResult] = useState(null);
+  
+  const [data, setData] = useState({
+    profileStatus: "ALL",
+    dateOfAccessionType: "ALL",
+    page: 1,
+    size: 50
+  });
+
+  const handleSearch = async(data) => {
+    let result;
+    result = await WaitingPartnerSearch(data);
+    setSearchResult(result);
+  };
 
   return (
     <>
@@ -43,12 +58,18 @@ function CommonBanner() {
           clickedTab === 'dropped' ? 
           null
           :
-          (<SearchBanner />)
+          clickedTab === 'waiting' ?
+          (<SearchBanner data={data} setData={setData} handleSearch={handleSearch} />)
+          :
+          clickedTab === 'approved' ?
+          (<ApprovedSearchBanner data={data} setData={setData} handleSearch={handleSearch} />)
+          :
+          null
         }
       </SearchBox>
       {
         clickedTab === 'waiting' ? (
-          <WaitingBanner clickedTab={clickedTab} />
+          <WaitingBanner clickedTab={clickedTab} searchResult={searchResult} />
         )
         :
         clickedTab === 'approved' ? (
@@ -56,12 +77,11 @@ function CommonBanner() {
         )
         :
         clickedTab === 'dropped' ? (
-          <DroppedBanner />
+          <DroppedBanner clickedTab={clickedTab} />
         )
         :
         null
       }
-
     </GlobalStyles>
     </>
   )

@@ -4,7 +4,6 @@ import Paging from "../../../searchResult/Paging";
 import { useEffect, useState } from "react";
 import { ApprovedPartnerSearch } from "../../../../api/partner/ApprovedPartnerSearch";
 import ApprovedPartnerModal from "../../../modal/partner/ApprovedPartnerModal";
-import GlobalStyles from "../../../../GlobalStyles";
 
 function ApprovedBanner({clickedTab}) {
   const [posts, setPosts] = useState([]);                   //  post 받아오기

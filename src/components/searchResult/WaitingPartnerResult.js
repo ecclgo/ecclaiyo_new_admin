@@ -66,7 +66,8 @@ function WaitingPartnerResult(props) {
                     setOpenModal={props.setOpenModal}
                     setMsgModal={props.setMsgModal}
                     Msg={props.Msg}
-                    statusData={props.setStatusData}
+                    setStatusData={props.setStatusData}
+                    statusData={props.statusData}
                   />
                 )
               }) : null
@@ -88,7 +89,7 @@ function GetPartner(props) {
   const handleSelectChange = async(selectedOption) => {
       if(selectedOption?.value === "IN_MODIFICATION") {
         props.setMsgModal(true);
-        props.statusData((prevState) => {
+        props.setStatusData((prevState) => {
           return {
             ...prevState,
             id: props.partnerId,
@@ -96,13 +97,11 @@ function GetPartner(props) {
           }
         });
       } else {
-        let data = 
-        {
+        let data = {
           id: props.partnerId,
           profileStatus: selectedOption.value,
           message: null
-        };
-        
+        }
         let result;
         result = await ChangeStatus(data);
       }

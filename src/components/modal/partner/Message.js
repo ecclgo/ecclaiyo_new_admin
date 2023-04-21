@@ -135,7 +135,7 @@ function Message(props) {
     let result;
     result = await ChangeStatus(props.newData);
   }
-
+  
   return(
     <>
       <ModalOverlay show={props.msgModal}>

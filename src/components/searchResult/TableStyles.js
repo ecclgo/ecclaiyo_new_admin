@@ -21,9 +21,9 @@ export const tableStyles = {
 export const PayTableStyles = {
   listTitle: {
     textAlign: "center",
-    width: "1000px",
+    width: "800px",
     background: "#EFF2F8",
-    height: "30px"
+    height: "40px"
   },
   listNo: {
     width: "100px",
@@ -38,7 +38,7 @@ export const PayTableStyles = {
   },
   contentListBody: {
     textAlign: "center",
-    height: "70px",
+    height: "40px",
     background: "#F8F9FD",
   }
 }
@@ -85,5 +85,24 @@ export const ModalTableStyle = {
     height: "107.5px",
     width: "280px",
     background: "#FFFFFF",
+  }
+}
+
+export const tableStyles2 = {
+  listTitle: {
+    textAlign: "center",
+    width: "200px",
+    background: "#EFF2F8",
+    height: "30px"
+  },
+  listInfo: {
+    width: "100%",
+    textAlign: "center",
+    margin: "10px"
+  },
+  contentListBody: {
+    textAlign: "center",
+    height: "70px",
+    background: "#F8F9FD",
   }
 }

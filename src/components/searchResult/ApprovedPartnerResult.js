@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { ChangeActiveStatus } from "../../api/partner/ChangeStatus";
 import Select from "react-select";
 import moment from "moment";
-import { useState } from "react";
 
 function ApprovedPartnerResult(props) {
 

@@ -198,9 +198,9 @@ export const ResultList = styled.div`
   box-sizing: border-box;
 
   position: absolute;
-  width: 2000px;
+  width: 2200px;
   height: 250px;
-  left: 150px;
+  left: 70px;
   top: 100px;
 
   border: 1px solid #EFF2F8;

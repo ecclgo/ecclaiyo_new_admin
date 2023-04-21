@@ -55,7 +55,7 @@ const DocBox = styled.div`
   background-color: lightgray;  
 `;
 
-function WaitingPartnerModal({openModal, setOpenModal}) {
+function WaitingPartnerModal({openModal, setOpenModal, Msg, setMsgModal, setStatusData}) {
   const [jsonList, setJsonList] = useState(null);
   const options = statusMenu;
 
@@ -96,15 +96,26 @@ function WaitingPartnerModal({openModal, setOpenModal}) {
   };
 
   const handleSelectChange = async(selectedOption) => {
-    let data = 
-    {
-      id: jsonList?.partnerId,
-      profileStatus: selectedOption.value,
-      message: (selectedOption.value === "IN_MODIFICATION" ? "in modification" : null),
-    };
-    console.log(data);
-    let result;
-    result = await ChangeStatus(data);
+    if(selectedOption.value === "IN_MODIFICATION") {
+      setMsgModal(true);
+      setStatusData((prevState) => {
+        return {
+          ...prevState,
+          id: jsonList?.partnerId,
+          profileStatus: selectedOption.value,
+        }
+      });
+    } else {
+      let data = 
+      {
+        id: jsonList?.partnerId,
+        profileStatus: selectedOption.value,
+        message:null
+      };
+
+      let result;
+      result = await ChangeStatus(data);
+    }
   };
 
   return(
