@@ -1,13 +1,11 @@
-import PayCommonBanner from "../../components/main/pay/PayCommonBanner";
+import PayCommonBanner from '../../components/main/pay/PayCommonBanner'
 
 function PayManagement() {
   return (
     <>
-      <PayCommonBanner>
-
-      </PayCommonBanner>
+      <PayCommonBanner></PayCommonBanner>
     </>
   )
-};
+}
 
-export default PayManagement;
+export default PayManagement

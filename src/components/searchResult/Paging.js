@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react'
+import styled from 'styled-components'
 
 const PageUl = styled.ul`
   position: absolute;
@@ -9,10 +9,10 @@ const PageUl = styled.ul`
   border-radius: 3px;
   color: black;
   padding: 1px;
-  
+
   top: 400px;
   left: 1100px;
-`;
+`
 
 const PageLi = styled.li`
   display: inline-block;
@@ -21,7 +21,7 @@ const PageLi = styled.li`
   padding: 5px;
   border-radius: 5px;
   width: 25px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   &:hover {
     cursor: pointer;
     background-color: green;
@@ -29,7 +29,7 @@ const PageLi = styled.li`
   &:focus::after {
     color: green;
   }
-`;
+`
 
 const PageSpan = styled.button`
   padding: 5px 5px;
@@ -37,8 +37,8 @@ const PageSpan = styled.button`
   font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: ${props => props.activeBtn ? 'green' : '#FFFFFF'};
-  color: ${props => props.activeBtn ? '#FFFFFF' : '#333333'};
+  background-color: ${(props) => (props.activeBtn ? 'green' : '#FFFFFF')};
+  color: ${(props) => (props.activeBtn ? '#FFFFFF' : '#333333')};
   border: none;
   &:hover {
     background-color: green;
@@ -48,28 +48,34 @@ const PageSpan = styled.button`
     color: black;
     background-color: green;
   }
-`;
+`
 
 function Paging({ totalPosts, paginate }) {
-  const [activeBtn, setActiveBtn] = useState(1);
+  const [activeBtn, setActiveBtn] = useState(1)
 
   const handleClick = (number) => {
-    setActiveBtn(number);
-  }
-  
-
-  const pageNumbers = [];
-  for(let i = 1; i <= Math.ceil(totalPosts / 5); i++) {
-    pageNumbers.push(i);
+    setActiveBtn(number)
   }
 
-  return(
+  const pageNumbers = []
+  for (let i = 1; i <= Math.ceil(totalPosts / 5); i++) {
+    pageNumbers.push(i)
+  }
+
+  return (
     <div>
       <nav>
-        <PageUl className="pagination" > 
+        <PageUl className="pagination">
           {pageNumbers.map((number) => (
-            <PageLi key={number} className="page-item" >
-              <PageSpan activeBtn={activeBtn === number} onClick={() => {paginate(number); handleClick(number)}} className="page-link">
+            <PageLi key={number} className="page-item">
+              <PageSpan
+                activeBtn={activeBtn === number}
+                onClick={() => {
+                  paginate(number)
+                  handleClick(number)
+                }}
+                className="page-link"
+              >
                 {number}
               </PageSpan>
             </PageLi>
@@ -80,4 +86,4 @@ function Paging({ totalPosts, paginate }) {
   )
 }
 
-export default Paging;
+export default Paging

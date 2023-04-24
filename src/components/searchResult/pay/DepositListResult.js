@@ -1,11 +1,11 @@
-import { Table } from "react-bootstrap";
-import { PayTableStyles } from "../TableStyles";
-import styled from "styled-components";
+import { Table } from 'react-bootstrap'
+import { PayTableStyles } from '../TableStyles'
+import styled from 'styled-components'
 
-function DepositListResult({jsonList}) {
+function DepositListResult({ jsonList }) {
   return (
     <>
-      <Table striped bordered hover size='sm'>
+      <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th style={PayTableStyles.listTitle}>NO</th>
@@ -27,31 +27,29 @@ function DepositListResult({jsonList}) {
           </tr>
         </thead>
         <tbody style={PayTableStyles.contentListBody}>
-          {
-            (jsonList?.map((item, i) => {
-              return(
-                <GetDepositArr
-                  key={i}
-                  No={i + 1}
-                  partnerId={item.partnerId}
-                  partnerName={item.partnerName}
-                  bankName={item.bankName}
-                  accountNumber={item.accountNumber}
-                  totalPaymentsAmount={item.totalPaymentsAmount}
-                  tototalCashPaymentstal={item.totalCashPayments}
-                  cashPaymentsServiceFee={item.cashPaymentsServiceFee}
-                  totalCardPayments={item.totalCardPayments}
-                  cardPaymentsServiceFee={item.cardPaymentsServiceFee}
-                  thisWeekDeposit={item.thisWeekDeposit}
-                  carryOverFromLastWeek={item.carryOverFromLastWeek}
-                  totalDeposit={item.totalDeposit}
-                  depositedAmount={item.depositedAmount}
-                  leftForNextWeek={item.leftForNextWeek}
-                  needToComplete={item.needToComplete}
-                />
-              )
-            }))
-          }
+          {jsonList?.map((item, i) => {
+            return (
+              <GetDepositArr
+                key={i}
+                No={i + 1}
+                partnerId={item.partnerId}
+                partnerName={item.partnerName}
+                bankName={item.bankName}
+                accountNumber={item.accountNumber}
+                totalPaymentsAmount={item.totalPaymentsAmount}
+                tototalCashPaymentstal={item.totalCashPayments}
+                cashPaymentsServiceFee={item.cashPaymentsServiceFee}
+                totalCardPayments={item.totalCardPayments}
+                cardPaymentsServiceFee={item.cardPaymentsServiceFee}
+                thisWeekDeposit={item.thisWeekDeposit}
+                carryOverFromLastWeek={item.carryOverFromLastWeek}
+                totalDeposit={item.totalDeposit}
+                depositedAmount={item.depositedAmount}
+                leftForNextWeek={item.leftForNextWeek}
+                needToComplete={item.needToComplete}
+              />
+            )
+          })}
         </tbody>
       </Table>
     </>
@@ -60,7 +58,7 @@ function DepositListResult({jsonList}) {
   function GetDepositArr(props) {
     const Container = styled.div`
       display: flex;
-    `;
+    `
 
     const CompleteBtn = styled.button`
       margin-left: 20px;
@@ -68,26 +66,26 @@ function DepositListResult({jsonList}) {
       height: 30px;
       display: inline-block;
       background-color: green;
-      color: #FFFFFF;
+      color: #ffffff;
       border: none;
       cursor: pointer;
       border-radius: 5px;
       font-weight: 600;
-    `;
+    `
 
     const DirectBtn = styled.button`
       margin-left: 30px;
       width: 100px;
       height: 30px;
       display: inline-block;
-      background-color: #FFFFFF;
+      background-color: #ffffff;
       color: #333333;
       border: none;
       cursor: pointer;
       border-radius: 5px;
       font-weight: 600;
       border-color: grey;
-    `;
+    `
 
     return (
       <>
@@ -107,18 +105,22 @@ function DepositListResult({jsonList}) {
           <td>{props.totalDeposit}</td>
           <td>{props.depositedAmount}</td>
           <td>{props.leftForNextWeek}</td>
-          <td>{!props.needToComplete ? (
-            <>
-              <Container>
-                <DirectBtn>직접 입력</DirectBtn>
-                <CompleteBtn>완료 처리</CompleteBtn>
-              </Container>
-            </>
-          ) : '입금 처리 완료'}</td>
+          <td>
+            {!props.needToComplete ? (
+              <>
+                <Container>
+                  <DirectBtn>직접 입력</DirectBtn>
+                  <CompleteBtn>완료 처리</CompleteBtn>
+                </Container>
+              </>
+            ) : (
+              '입금 처리 완료'
+            )}
+          </td>
         </tr>
       </>
     )
   }
-};
+}
 
-export default DepositListResult;
+export default DepositListResult

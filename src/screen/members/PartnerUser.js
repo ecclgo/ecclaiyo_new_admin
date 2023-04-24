@@ -1,9 +1,5 @@
 function PartnerUser() {
-  return (
-    <>
-    
-    </>
-  )
-};
+  return <></>
+}
 
-export default PartnerUser;
+export default PartnerUser

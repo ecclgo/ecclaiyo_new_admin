@@ -1,6 +1,6 @@
-import GlobalStyles from "../../GlobalStyles";
-import PageTitle from "../../components/PageTitle";
-import CommonBanner from "../../components/main/members/partner/CommonBanner";
+import GlobalStyles from '../../GlobalStyles'
+import PageTitle from '../../components/PageTitle'
+import CommonBanner from '../../components/main/members/partner/CommonBanner'
 
 function PartnerMember() {
   return (
@@ -10,6 +10,6 @@ function PartnerMember() {
       </CommonBanner>
     </GlobalStyles>
   )
-};
+}
 
-export default PartnerMember;
+export default PartnerMember

@@ -1,6 +1,6 @@
-import { Table } from "react-bootstrap";
-import { tableStyles2 } from "./TableStyles";
-import moment from "moment";
+import { Table } from 'react-bootstrap'
+import { tableStyles2 } from './TableStyles'
+import moment from 'moment'
 
 function DroppedPartnerResult(props) {
   return (
@@ -22,43 +22,53 @@ function DroppedPartnerResult(props) {
           </tr>
         </thead>
         <tbody style={tableStyles2.contentListBody}>
-          {
-            (props.jsonList !== null) ? props.jsonList?.map((item, i) => {
-              return (
-                <GetDropped
-                  key={i}
-                  NO={i + 1}
-                  id={item.id}
-                  partnerName={item.partnerName}
-                  phoneNumber={item.phoneNumber}
-                  mannerPoint={item.mannerPoint}
-                  countOfService={item.countOfService}
-                  gpa={item.gpa}
-                  additionalNote={item.additionalNote}
-                  passInfo={
-                    item.passInfo?.type === 'MONTHLY' ? '월간 구독권 / ' + item.passInfo?.remainDay + '일 남음'
-                    : item.passInfo?.type === 'YEARLY' ? '연간 구독권 / ' + item.passInfo?.remainDay + '일 남음'
-                    : item.passInfo?.type === 'FREE' ? '자유 이용권' : null 
+          {props.jsonList !== null
+            ? props.jsonList?.map((item, i) => {
+                return (
+                  <GetDropped
+                    key={i}
+                    NO={i + 1}
+                    id={item.id}
+                    partnerName={item.partnerName}
+                    phoneNumber={item.phoneNumber}
+                    mannerPoint={item.mannerPoint}
+                    countOfService={item.countOfService}
+                    gpa={item.gpa}
+                    additionalNote={item.additionalNote}
+                    passInfo={
+                      item.passInfo?.type === 'MONTHLY'
+                        ? '월간 구독권 / ' +
+                          item.passInfo?.remainDay +
+                          '일 남음'
+                        : item.passInfo?.type === 'YEARLY'
+                        ? '연간 구독권 / ' +
+                          item.passInfo?.remainDay +
+                          '일 남음'
+                        : item.passInfo?.type === 'FREE'
+                        ? '자유 이용권'
+                        : null
                     }
-                  unregisterDate={moment(item.unregisterDate).format('YY.MM.DD')}
-                  dateOfAccession={moment(item.dateOfAccession).format('YY.MM.DD')}
-                />
-              )
-            }) : null
-          }
+                    unregisterDate={moment(item.unregisterDate).format(
+                      'YY.MM.DD',
+                    )}
+                    dateOfAccession={moment(item.dateOfAccession).format(
+                      'YY.MM.DD',
+                    )}
+                  />
+                )
+              })
+            : null}
         </tbody>
       </Table>
     </>
   )
 
   function GetDropped(props) {
-    return(
+    return (
       <>
         <tr>
           <td>{props.NO}</td>
-          <td >
-              {props.id}
-          </td>
+          <td>{props.id}</td>
           <td>{props.partnerName}</td>
           <td>{props.phoneNumber}</td>
           <td>{props.mannerPoint}</td>
@@ -72,6 +82,6 @@ function DroppedPartnerResult(props) {
       </>
     )
   }
-};
+}
 
-export default DroppedPartnerResult;
+export default DroppedPartnerResult

@@ -1,16 +1,15 @@
-import { Table } from "react-bootstrap";
-import { tableStyles } from "./TableStyles";
-import { activeMenu } from "../Constants";
-import styled from "styled-components";
-import { ChangeActiveStatus } from "../../api/partner/ChangeStatus";
-import Select from "react-select";
-import moment from "moment";
+import { Table } from 'react-bootstrap'
+import { tableStyles } from './TableStyles'
+import { activeMenu } from '../Constants'
+import styled from 'styled-components'
+import { ChangeActiveStatus } from '../../api/partner/ChangeStatus'
+import Select from 'react-select'
+import moment from 'moment'
 
 function ApprovedPartnerResult(props) {
-
   const StyledSelect = styled(Select)`
     width: 200px;
-  `;
+  `
 
   return (
     <>
@@ -32,81 +31,110 @@ function ApprovedPartnerResult(props) {
           </tr>
         </thead>
         <tbody style={tableStyles.contentListBody}>
-          {
-            (props.jsonList !== null) ? props.jsonList?.map((item, i) => {
-              return (
-                <GetApproved 
-                  key={i}
-                  NO={i + 1}
-                  id={item.id}
-                  partnerActiveStatus={
-                    item.partnerActiveStatus === 'ACTIVE' ? '활동 가능' 
-                    : item.partnerActiveStatus === 'BLOCKED_TEMPORARY' ? '활동 정지(30일)' 
-                    : item.partnerActiveStatus === 'BLOCKED_LIFETIME' ? '활동 정지(무기한)' 
-                    : null}
-                  partnerName={item.partnerName}
-                  phoneNumber={item.phoneNumber}
-                  mannerPoint={item.mannerPoint}
-                  countOfService={item.countOfService}
-                  gpa={item.gpa}
-                  additionalNote={item.additionalNote}
-                  passInfo={
-                    item.passInfo?.type === 'MONTHLY' ? '월간 구독권 / ' + item.passInfo?.remainDay + '일 남음'
-                    : item.passInfo?.type === 'YEARLY' ? '연간 구독권 / ' + item.passInfo?.remainDay + '일 남음'
-                    : item.passInfo?.type === 'FREE' ? '자유 이용권' : null 
+          {props.jsonList !== null
+            ? props.jsonList?.map((item, i) => {
+                return (
+                  <GetApproved
+                    key={i}
+                    NO={i + 1}
+                    id={item.id}
+                    partnerActiveStatus={
+                      item.partnerActiveStatus === 'ACTIVE'
+                        ? '활동 가능'
+                        : item.partnerActiveStatus === 'BLOCKED_TEMPORARY'
+                        ? '활동 정지(30일)'
+                        : item.partnerActiveStatus === 'BLOCKED_LIFETIME'
+                        ? '활동 정지(무기한)'
+                        : null
                     }
-                  lastAccessDate={moment(item.lastAccessDate).format('YY.MM.DD' + ' - ' + 'HH:mm')}
-                  dateOfAccession={moment(item.dateOfAccession).format('YY.MM.DD' + ' - ' + 'HH:mm')}
-                  setOpenModal={props.setOpenModal}
-                />
-              )
-            }) : null
-          }
+                    partnerName={item.partnerName}
+                    phoneNumber={item.phoneNumber}
+                    mannerPoint={item.mannerPoint}
+                    countOfService={item.countOfService}
+                    gpa={item.gpa}
+                    additionalNote={item.additionalNote}
+                    passInfo={
+                      item.passInfo?.type === 'MONTHLY'
+                        ? '월간 구독권 / ' +
+                          item.passInfo?.remainDay +
+                          '일 남음'
+                        : item.passInfo?.type === 'YEARLY'
+                        ? '연간 구독권 / ' +
+                          item.passInfo?.remainDay +
+                          '일 남음'
+                        : item.passInfo?.type === 'FREE'
+                        ? '자유 이용권'
+                        : null
+                    }
+                    lastAccessDate={moment(item.lastAccessDate).format(
+                      'YY.MM.DD' + ' - ' + 'HH:mm',
+                    )}
+                    dateOfAccession={moment(item.dateOfAccession).format(
+                      'YY.MM.DD' + ' - ' + 'HH:mm',
+                    )}
+                    setOpenModal={props.setOpenModal}
+                  />
+                )
+              })
+            : null}
         </tbody>
       </Table>
     </>
   )
 
   function GetApproved(props) {
-
-    const options = activeMenu;
+    const options = activeMenu
     const dropdownOptions = options.map((option) => {
-      return {value: option.engStatus, label: option.korStatus}
-    });
+      return { value: option.engStatus, label: option.korStatus }
+    })
 
-    const handleSelectChange = async(selectedOption) => {
-      let data = 
-      {
+    const handleSelectChange = async (selectedOption) => {
+      let data = {
         id: props.id,
         status: selectedOption.value,
-      };
-      await ChangeActiveStatus(data);
-    };
+      }
+      await ChangeActiveStatus(data)
+    }
 
     const handleModal = () => {
-      props.setOpenModal(true);
-    };
+      props.setOpenModal(true)
+    }
 
     const getPartnerId = (data) => {
-      if(localStorage.getItem("partnerId") === '') {
-        localStorage.setItem("partnerId", data);
+      if (localStorage.getItem('partnerId') === '') {
+        localStorage.setItem('partnerId', data)
       } else {
-        localStorage.removeItem("partnerId");
-        localStorage.setItem("partnerId", data);
+        localStorage.removeItem('partnerId')
+        localStorage.setItem('partnerId', data)
       }
-    };
+    }
 
     return (
       <>
         <tr>
           <td>{props.NO}</td>
-          <td >
-            <a style={{cursor: "pointer", textDecorationLine:"underline", color: "blue"}} onClick={() => {handleModal(); getPartnerId(props.id);}}>
+          <td>
+            <a
+              style={{
+                cursor: 'pointer',
+                textDecorationLine: 'underline',
+                color: 'blue',
+              }}
+              onClick={() => {
+                handleModal()
+                getPartnerId(props.id)
+              }}
+            >
               {props.id}
             </a>
           </td>
           <td>
-            <StyledSelect options={dropdownOptions} defaultValue={props.partnerActiveStatus} placeholder={props.partnerActiveStatus} onChange={handleSelectChange} />
+            <StyledSelect
+              options={dropdownOptions}
+              defaultValue={props.partnerActiveStatus}
+              placeholder={props.partnerActiveStatus}
+              onChange={handleSelectChange}
+            />
           </td>
           <td>{props.partnerName}</td>
           <td>{props.phoneNumber}</td>
@@ -121,6 +149,6 @@ function ApprovedPartnerResult(props) {
       </>
     )
   }
-};
+}
 
-export default ApprovedPartnerResult;
+export default ApprovedPartnerResult

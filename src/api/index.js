@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios'
 
-const baseURL = "https://dev-api.ecclaiyo.com";
+const baseURL = 'https://dev-api.ecclaiyo.com'
 
 const headers = {
-	"Content-Type": "application/json"
-};
+  'Content-Type': 'application/json',
+}
 
 const baseApiInstance = axios.create({
-	baseURL,
-	headers,
-});
+  baseURL,
+  headers,
+})
 
-export default baseApiInstance;
+export default baseApiInstance

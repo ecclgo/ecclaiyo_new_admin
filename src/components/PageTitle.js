@@ -1,7 +1,11 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from 'react-helmet-async'
 
-const PageTitle = ({title}) => {
-  return <Helmet><title>{title}</title></Helmet>;
+const PageTitle = ({ title }) => {
+  return (
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+  )
 }
 
-export default PageTitle;
+export default PageTitle

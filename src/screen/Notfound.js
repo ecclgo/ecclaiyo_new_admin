@@ -1,9 +1,5 @@
 function Notfound() {
-  return (
-    <>
-      Not Found.
-    </>
-  )
-};
+  return <>Not Found.</>
+}
 
-export default Notfound;
+export default Notfound

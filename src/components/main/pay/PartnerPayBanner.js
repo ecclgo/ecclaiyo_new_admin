@@ -1,5 +1,3 @@
-function PartnerPayBanner() {
+function PartnerPayBanner() {}
 
-};
-
-export default PartnerPayBanner;
+export default PartnerPayBanner

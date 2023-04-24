@@ -1,13 +1,9 @@
-import { Form, Table } from "react-bootstrap";
-import ReactDatePicker from "react-datepicker";
-import styled from "styled-components";
+import { Form, Table } from 'react-bootstrap'
+import ReactDatePicker from 'react-datepicker'
+import styled from 'styled-components'
 
-const SearchBox = styled.div`
-  
-`;
+const SearchBox = styled.div``
 
-function Date() {
-  
-};
+function Date() {}
 
-export default Date;
+export default Date

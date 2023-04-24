@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SBanner = styled.div`
   position: absolute;
@@ -8,9 +8,9 @@ export const SBanner = styled.div`
   top: 90px;
   border: 1px solid;
 
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
-`;
+`
 
 export const BannerText = styled.span`
   position: absolute;
@@ -19,8 +19,8 @@ export const BannerText = styled.span`
   left: 30px;
   top: 30px;
   text-align: center;
-  background-color: #FFFFFF;
-  border-color: #FFFFFF;
+  background-color: #ffffff;
+  border-color: #ffffff;
   border: none;
 
   font-family: 'Inter';
@@ -30,7 +30,7 @@ export const BannerText = styled.span`
   line-height: 30px;
 
   color: #333333;
-`;
+`
 
 export const RegiBanner = styled.div`
   position: absolute;
@@ -41,8 +41,8 @@ export const RegiBanner = styled.div`
   border: 0.1px solid;
   border-radius: 10px;
 
-  background: #FFFFFF;
-`;
+  background: #ffffff;
+`
 
 export const RegiBtn = styled.div`
   position: absolute;
@@ -51,7 +51,7 @@ export const RegiBtn = styled.div`
   left: 248px;
   top: 180px;
   display: flex;
-`;
+`
 
 export const WaitingBtn = styled.button`
   position: absolute;
@@ -61,7 +61,7 @@ export const WaitingBtn = styled.button`
   top: -150px;
   border: none;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333333;
   cursor: pointer;
 
@@ -76,48 +76,47 @@ export const WaitingBtn = styled.button`
   }
   &.active {
     color: green;
-
   }
-`;
+`
 
 export const WaitingBtnLine = styled.div`
-    position: absolute;
-    width: 67px;
-    height: 1px;
-    left: 6px;
-    top: 25px;
-    background-color: green;
+  position: absolute;
+  width: 67px;
+  height: 1px;
+  left: 6px;
+  top: 25px;
+  background-color: green;
 
   &.notActive {
     display: none;
   }
-`;
+`
 
 export const ApproveBtnLine = styled.div`
-    position: absolute;
-    width: 80px;
-    height: 1px;
-    left: 15px;
-    top: 25px;
-    background-color: green;
+  position: absolute;
+  width: 80px;
+  height: 1px;
+  left: 15px;
+  top: 25px;
+  background-color: green;
 
   &.notActive {
     display: none;
   }
-`;
+`
 
 export const DroppedBtnLine = styled.div`
-    position: absolute;
-    width: 70px;
-    height: 1px;
-    left: 6px;
-    top: 25px;
-    background-color: green;
+  position: absolute;
+  width: 70px;
+  height: 1px;
+  left: 6px;
+  top: 25px;
+  background-color: green;
 
   &.notActive {
     display: none;
   }
-`;
+`
 
 export const ApprovedBtn = styled.button`
   position: absolute;
@@ -127,7 +126,7 @@ export const ApprovedBtn = styled.button`
   top: -150px;
   border: none;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333333;
   cursor: pointer;
 
@@ -143,7 +142,7 @@ export const ApprovedBtn = styled.button`
   &.active {
     color: green;
   }
-`;
+`
 
 export const DroppedBtn = styled.button`
   position: absolute;
@@ -153,7 +152,7 @@ export const DroppedBtn = styled.button`
   top: -150px;
   border: none;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333333;
   cursor: pointer;
 
@@ -168,8 +167,8 @@ export const DroppedBtn = styled.button`
   }
   &.active {
     color: green;
-  }  
-`;
+  }
+`
 
 export const SearchBox = styled.div`
   position: absolute;
@@ -179,9 +178,9 @@ export const SearchBox = styled.div`
   top: 290px;
   border: 0.1px solid;
 
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 10px;
-`;
+`
 
 export const SearchText = styled.span`
   position: absolute;
@@ -197,11 +196,9 @@ export const SearchText = styled.span`
   line-height: 22px;
 
   color: #333333;
-`;
+`
 
-export const SearchTable = styled.div`
-  
-`;
+export const SearchTable = styled.div``
 
 export const ResultBox = styled.div`
   position: absolute;
@@ -211,9 +208,9 @@ export const ResultBox = styled.div`
   top: 620px;
   border: 0.1px solid;
 
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 10px;
-`;
+`
 
 export const ResultNumber = styled.span`
   position: absolute;
@@ -228,7 +225,7 @@ export const ResultNumber = styled.span`
   font-size: 20px;
   line-height: 22px;
   color: #333333;
-`;
+`
 
 export const ResultList = styled.div`
   box-sizing: border-box;
@@ -239,18 +236,16 @@ export const ResultList = styled.div`
   left: 150px;
   top: 100px;
 
-  border: 1px solid #EFF2F8;
-`;
+  border: 1px solid #eff2f8;
+`
 
-export const ApprovedList = styled.div`
-
-`;
+export const ApprovedList = styled.div``
 
 export const PostNumber = styled.span`
   color: ${(props) => {
-    const number = parseInt(props.number);
-    if(number >= 0) {
-      return 'green';
+    const number = parseInt(props.number)
+    if (number >= 0) {
+      return 'green'
     }
   }};
-`;
+`

@@ -1,46 +1,63 @@
-import { useState } from "react";
-import { AllBox, Checkbox, CheckboxContainer, Input, Label, MonthBox, ResetBtn, SearchBtn, Table, Td, Th, TodayBox, YearBox } from "./SearchBannerStyle";
+import { useState } from 'react'
+import {
+  AllBox,
+  Checkbox,
+  CheckboxContainer,
+  Input,
+  Label,
+  MonthBox,
+  ResetBtn,
+  SearchBtn,
+  Table,
+  Td,
+  Th,
+  TodayBox,
+  YearBox,
+} from './SearchBannerStyle'
 
 function ApprovedSearchBanner({ data, setData, handleSearch }) {
-  const [checked, setChecked] = useState([true, false, false]);
-  const [btnChecked, setBtnChecked] = useState([false, false, false, true]);
+  const [checked, setChecked] = useState([true, false, false])
+  const [btnChecked, setBtnChecked] = useState([false, false, false, true])
 
   const handleChange = (e) => {
-    const index = parseInt(e.target.id.split("-")[1]) - 1;
-    const newChecked = checked.map((value, i) => i === index);
-    setChecked(newChecked);
+    const index = parseInt(e.target.id.split('-')[1]) - 1
+    const newChecked = checked.map((value, i) => i === index)
+    setChecked(newChecked)
     setData((prevState) => {
       return {
         ...prevState,
         profileStatus: e.target.value,
         page: 10,
-        size: 5
+        size: 5,
       }
     })
   }
 
   const handleBtnChange = (e) => {
-    const index = parseInt(e.target.id.split("-")[1]) - 1;
-    const newChecked = btnChecked.map((value, i) => i === index);
-    setBtnChecked(newChecked);
+    const index = parseInt(e.target.id.split('-')[1]) - 1
+    const newChecked = btnChecked.map((value, i) => i === index)
+    setBtnChecked(newChecked)
     setData((prevState) => {
       return {
         ...prevState,
         dateOfAccessionType: e.target.value,
         page: 10,
-        size: 5
+        size: 5,
       }
     })
   }
 
-  return(
+  return (
     <>
       <Table>
         <thead>
           <tr>
             <Th>검색어</Th>
             <Td>
-              <Input type="text" placeholder="파트너Id / 파트너 이름 / 연락처" />
+              <Input
+                type="text"
+                placeholder="파트너Id / 파트너 이름 / 연락처"
+              />
             </Td>
           </tr>
           <tr>
@@ -80,30 +97,46 @@ function ApprovedSearchBanner({ data, setData, handleSearch }) {
           <tr>
             <Th>가입날짜</Th>
             <Td>
-              <TodayBox id="checkbox-1" value="TODAY" checked={btnChecked[0]} onClick={handleBtnChange}>
+              <TodayBox
+                id="checkbox-1"
+                value="TODAY"
+                checked={btnChecked[0]}
+                onClick={handleBtnChange}
+              >
                 오늘
               </TodayBox>
-              <MonthBox id="checkbox-2" value="MONTH" checked={btnChecked[1]} onClick={handleBtnChange}>
+              <MonthBox
+                id="checkbox-2"
+                value="MONTH"
+                checked={btnChecked[1]}
+                onClick={handleBtnChange}
+              >
                 이번달
               </MonthBox>
-              <YearBox id="checkbox-3" value="YEAR" checked={btnChecked[2]} onClick={handleBtnChange}>
+              <YearBox
+                id="checkbox-3"
+                value="YEAR"
+                checked={btnChecked[2]}
+                onClick={handleBtnChange}
+              >
                 1년
               </YearBox>
-              <AllBox id="checkbox-4" value="ALL" checked={btnChecked[3]} onClick={handleBtnChange}>
+              <AllBox
+                id="checkbox-4"
+                value="ALL"
+                checked={btnChecked[3]}
+                onClick={handleBtnChange}
+              >
                 전체
               </AllBox>
             </Td>
-            <SearchBtn>
-              검색
-            </SearchBtn>
-            <ResetBtn>
-              초기화
-            </ResetBtn>
+            <SearchBtn>검색</SearchBtn>
+            <ResetBtn>초기화</ResetBtn>
           </tr>
         </thead>
       </Table>
     </>
   )
-};
+}
 
-export default ApprovedSearchBanner;
+export default ApprovedSearchBanner

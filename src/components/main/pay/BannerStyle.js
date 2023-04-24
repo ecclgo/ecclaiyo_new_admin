@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SBanner = styled.div`
   position: absolute;
@@ -8,9 +8,9 @@ export const SBanner = styled.div`
   top: 90px;
   border: 0.1px solid;
 
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
-`;
+`
 
 export const BannerText = styled.span`
   position: absolute;
@@ -19,7 +19,7 @@ export const BannerText = styled.span`
   left: 20px;
   top: 30px;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   font-family: 'Inter';
   font-style: normal;
@@ -28,7 +28,7 @@ export const BannerText = styled.span`
   line-height: 30px;
 
   color: #333333;
-`;
+`
 
 export const PayBanner = styled.div`
   position: absolute;
@@ -39,8 +39,8 @@ export const PayBanner = styled.div`
   border: 0.1px solid;
   border-radius: 10px;
 
-  background: #FFFFFF;  
-`;
+  background: #ffffff;
+`
 
 export const PayBtn = styled.div`
   position: absolute;
@@ -49,7 +49,7 @@ export const PayBtn = styled.div`
   left: 248px;
   top: 180px;
   display: flex;
-`;
+`
 
 export const PayCompleteBtn = styled.button`
   position: absolute;
@@ -59,7 +59,7 @@ export const PayCompleteBtn = styled.button`
   top: -150px;
   border: none;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333333;
   cursor: pointer;
 
@@ -74,9 +74,8 @@ export const PayCompleteBtn = styled.button`
   }
   &.active {
     color: green;
-
   }
-`;
+`
 
 export const PartnerPayBtn = styled.button`
   position: absolute;
@@ -86,7 +85,7 @@ export const PartnerPayBtn = styled.button`
   top: -150px;
   border: none;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333333;
   cursor: pointer;
 
@@ -102,33 +101,33 @@ export const PartnerPayBtn = styled.button`
   &.active {
     color: green;
   }
-`;
+`
 
 export const PayBtnLine = styled.div`
-    position: absolute;
-    width: 67px;
-    height: 1px;
-    left: 6px;
-    top: 25px;
-    background-color: green;
+  position: absolute;
+  width: 67px;
+  height: 1px;
+  left: 6px;
+  top: 25px;
+  background-color: green;
 
   &.notActive {
     display: none;
   }
-`;
+`
 
 export const PartnerPayBtnLine = styled.div`
-    position: absolute;
-    width: 80px;
-    height: 1px;
-    left: 15px;
-    top: 25px;
-    background-color: green;
+  position: absolute;
+  width: 80px;
+  height: 1px;
+  left: 15px;
+  top: 25px;
+  background-color: green;
 
   &.notActive {
     display: none;
   }
-`;
+`
 
 export const SearchBox = styled.div`
   position: absolute;
@@ -138,9 +137,9 @@ export const SearchBox = styled.div`
   top: 290px;
   border: 0.1px solid;
 
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 10px;
-`;
+`
 
 export const SearchText = styled.span`
   position: absolute;
@@ -156,7 +155,7 @@ export const SearchText = styled.span`
   line-height: 22px;
 
   color: #333333;
-`;
+`
 
 export const ResultBox = styled.div`
   position: absolute;
@@ -166,9 +165,9 @@ export const ResultBox = styled.div`
   top: 620px;
   border: 0.1px solid;
 
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 10px;
-`;
+`
 
 export const ResultNumber = styled.span`
   position: absolute;
@@ -183,16 +182,16 @@ export const ResultNumber = styled.span`
   font-size: 20px;
   line-height: 22px;
   color: #333333;
-`;
+`
 
 export const PostNumber = styled.span`
   color: ${(props) => {
-    const number = parseInt(props.number);
-    if(number >= 0) {
-      return 'green';
+    const number = parseInt(props.number)
+    if (number >= 0) {
+      return 'green'
     }
   }};
-`;
+`
 
 export const ResultList = styled.div`
   box-sizing: border-box;
@@ -203,5 +202,5 @@ export const ResultList = styled.div`
   left: 70px;
   top: 100px;
 
-  border: 1px solid #EFF2F8;
-`;
+  border: 1px solid #eff2f8;
+`
